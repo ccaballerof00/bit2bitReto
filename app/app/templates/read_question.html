@@ -1,0 +1,105 @@
+{% extends 'base.html' %}
+{% load static %}
+
+
+{% block content %}
+
+{% block css %}
+<link rel="stylesheet" type="text/css" href="{% static 'styles/read_question.css' %}">
+{% endblock %}
+
+<div id='QuestionCard' class="card">
+    <div class="card-body">
+        <h3 class="card-title">{{Title}}</h3>
+        <p id='autor'>By: {{Author}}</p>
+        <p id='fecha'>Published: {{CreationDate}}</p>      
+        <p id='contenido' >{{Description}}</p>
+    </div>
+    <div id='ReplyDiv'>
+        <button type="button" id='ReplyButton' class="btn btn-outline-danger" data-bs-toggle="modal" data-bs-target="#replyModal">Reply</button>
+    </div>
+</div>
+
+<form action="../submit_answer" method="post">
+    {% csrf_token %}
+<div class="modal fade" role="dialog" id="replyModal">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3 class="modal-title">Formulario</h3>
+                <button type="button" class="close" data-bs-dismiss="modal">&times;</button>
+            </div>
+
+            <div class="modal-body">
+                <div class="form-group">
+                    <input type="text" id='Author' name="Author" class="form-control" placeholder="Author nickname">
+                    <input type="hidden" id="Question_Id" name="Question_Id" value={{Question_Id}}>
+                </div>
+                <div class="form-group">
+                    <textarea class="form-control" name='Description' id="Description" rows="3" placeholder="Write your reply here"></textarea>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="submit" class="btn btn-success">Submit</button>
+            </div>
+        </div>
+    </div>
+</div>
+</form>
+
+<div id='Answers'>
+</div>
+
+<script>
+    function htmlDecode(str) {
+        const doc = new DOMParser().parseFromString(str, "text/html");
+        return doc.documentElement.textContent;
+    }
+    var rptas = '{{Answers}}'
+    if(rptas == '[]'){
+        var carddiv = document.createElement("div")
+        carddiv.id = "AnswersCards"
+        carddiv.className = "card"
+        var p = document.createElement("p")
+        p.innerHTML = 'There are no answers for this question yet.'
+        p.id = 'NoAnswers'
+        carddiv.appendChild(p)
+        document.getElementById('Answers').appendChild(carddiv)
+    } else {
+        list = JSON.parse(htmlDecode('{{AnswerObjects}}'))
+        
+        for(var i = 0; i < list.length; i++) {
+            var answer = list[i]
+            var author = answer['Author']
+            var description = answer['Description']
+            var creationdate = answer['CreationDate']
+
+            var container = document.createElement("div")
+            container.className = "card"
+            container.id = "Container"
+            var div1 = document.createElement("div")
+            div1.className = "card-body"
+            div1.id = 'div1'
+            var p = document.createElement("p")
+            p.className = "card-text"
+            p.innerHTML = description
+            div1.appendChild(p)
+            var div2 = document.createElement("div")
+            div2.className = "card-footer"
+            div2.id = 'div2'
+            var small = document.createElement("small")
+            small.innerHTML = "Published: " + new Date(creationdate)
+            var small2 = document.createElement("small")
+            small2.innerHTML = "Author: " + author
+            small2.id = "answerauthor"
+            div2.appendChild(small)
+            div2.appendChild(small2)
+            container.appendChild(div1)
+            container.appendChild(div2)
+            
+            document.getElementById("Answers").appendChild(container)
+        }
+    }
+</script>
+
+{% endblock %}

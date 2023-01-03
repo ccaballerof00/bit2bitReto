@@ -1,0 +1,31 @@
+{% extends 'base.html' %}
+{% load static %}
+
+
+{% block content %}
+
+{% block css %}
+<link rel="stylesheet" type="text/css" href="{% static 'styles/create_question.css' %}">
+{% endblock %}
+<h2>Ask your question</h2>
+<form name='ask' action='create_question' method='post'>
+    {% csrf_token %}
+    <div class="form-group">
+      <label for="author">Author nickname</label>
+      <input type="text" name='author' class="form-control" id="author" >
+    </div>
+    <div class="form-group">
+        <label for="title">Title</label>
+        <input type="text" name='title' class="form-control" id="title" >
+      </div>
+    <div class="form-group">
+      <label for="description">Description</label>
+      <textarea class="form-control" name='description' id="description" rows="3"></textarea>
+    </div>
+    <div class="button-div">
+        <button type="button" onclick="ask.submit()" class="btn btn-outline-success">Submit</button>
+    </div>
+
+</form>
+
+{% endblock %}

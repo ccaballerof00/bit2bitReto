@@ -1,0 +1,15 @@
+div.form-group {
+    width: 80%;
+    margin: auto;
+    margin-top: 2rem;
+}
+
+h2 {
+    margin: auto;
+    margin-bottom: 0;
+}
+
+.button-div {
+    margin-top: 2rem;
+    text-align: center;
+}

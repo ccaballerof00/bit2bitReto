@@ -1,0 +1,55 @@
+#QuestionCard, #AnswersCards {
+    width: 60%;
+    margin: 2rem auto;
+    padding: 0.5rem 2rem 0.5rem 2rem;     
+}
+
+
+#AnswersCards {
+    background-color: #f8f9fa;
+    border-radius: 1.5rem;
+    text-align: center;
+}
+
+#autor, #fecha {
+    display: inline;
+    color: #555d64;
+    margin: 0.1rem 0;
+}
+
+#fecha {
+    float: right;
+}
+
+#titulo {
+    margin: 2rem 0 0.1rem 0;
+    text-align: center;
+}
+
+#contenido {
+    margin-top: 2rem;
+    text-align: justify;
+    font-size: large;
+}
+
+#ReplyDiv {
+    text-align: right;
+    padding-bottom: 1rem;
+}
+
+#Author {
+    margin-bottom: 0.5rem;
+}
+
+#Container {
+    width: 60%;
+    margin: auto;
+    background-color: #f8f9fa;
+    border-radius: 1.5rem;
+    text-align: center;
+    margin-bottom: 1.5rem;
+}
+
+#answerauthor {
+    float: right;
+}

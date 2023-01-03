@@ -1,0 +1,87 @@
+{% load static %}
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <link rel="stylesheet" href="{% static 'styles/base.css' %}">
+
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+
+    <!-- Boxicons CSS -->
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+
+    <title>Stack Overflow</title>
+  </head>
+  <body>
+    <nav class="navbar sticky-top navbar-expand-lg navbar-light bg-light">
+        <div class="container-fluid">
+            <a class="navbar-brand" href='../index'><img src="{% static 'logo.png'%}" alt="" width="230" height="45"> </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav">
+                <li class="nav-item">
+                <a class="nav-link" href="">About</a>
+                </li>
+                <li class="nav-item">
+                <a class="nav-link" href="">Products</a>
+                </li>
+            </ul>
+            </div>
+        </div>
+    </nav>
+
+    {% block content %}
+    {% endblock %}
+
+    <div id="footer" class='container-fluid'>
+        <div class='row p-5 bg-dark text-white'>
+            <div class="col-lg-3">
+                <p class="h5">Stack Overflow</p>
+                <div class="mb-2">
+                    <a class="text-secondary text-decoration-none" href="">Questions</a>
+                </div>
+                <div class="mb-2">
+                    <a class="text-secondary text-decoration-none" href="">Help</a>
+                </div>
+            </div>
+            <div class="col-lg-3">
+                <p class="h5">Products</p>
+                <div class="mb-2">
+                    <a class="text-secondary text-decoration-none" href="">Teams</a>
+                </div>
+                <div class="mb-2">
+                    <a class="text-secondary text-decoration-none" href="">Advertising</a>
+                </div>
+            </div>
+            <div class="col-lg-3">
+                <p class="h5">Company</p>
+                <div class="mb-2">
+                    <a class="text-secondary text-decoration-none" href="">About</a>
+                </div>
+                <div class="mb-2">
+                    <a class="text-secondary text-decoration-none" href="">Work here</a>
+                </div>
+            </div>
+            <div class="col-lg-3">
+                <p class="h5">Stack Exchange Network</p>
+                <div class="mb-2">
+                    <a class="text-secondary text-decoration-none" href="">Technology</a>
+                </div>
+                <div class="mb-2">
+                    <a class="text-secondary text-decoration-none" href="">Professional</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Option 1: Bootstrap Bundle with Popper -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+  </body>
+</html>

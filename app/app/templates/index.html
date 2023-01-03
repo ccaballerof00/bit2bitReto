@@ -1,0 +1,28 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+
+{% block css %}
+<link rel="stylesheet" type="text/css" href="{% static 'styles/index.css' %}">
+{% endblock %}
+
+<div>
+<form name="search" action="search_results" method="post">
+    {% csrf_token %}
+    <div id='big_logo' class='d-flex justify-content-center'>
+        <img src=" {% static 'logo.png' %}" width="550">
+    </div>
+    <div id='searchbar' class="text-center">
+        <div class="input-group mb-3">
+            <input type="text" name='keyword' class="form-control" placeholder="Search...">
+            <span class="input-group-text" onclick="search.submit()" id="basic-addon1"><i class='bx bx-search'></i></span>
+        </div>
+    </div>
+</form>
+    <div class="d-grid gap-2">
+        <button id='ask_question' onclick="window.location.href='open_create_question_form'" class="btn btn-primary" type="button">Ask a question...</button>
+    </div>
+</div>
+
+{% endblock %}

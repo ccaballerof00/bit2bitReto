@@ -1,0 +1,18 @@
+#NoMatches {
+    font-size: larger;
+    margin: 2rem;
+}
+
+#ErrorImage {
+    margin: 2rem;
+    margin-top: 0;
+}
+
+#author {
+    float: right;
+    
+}
+
+a {
+    color: black;
+}

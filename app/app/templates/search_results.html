@@ -1,0 +1,72 @@
+{% extends 'base.html' %}
+{% load static %}
+
+
+{% block content %}
+
+{% block css %}
+<link rel="stylesheet" type="text/css" href="{% static 'styles/search_results.css' %}">
+{% endblock %}
+
+<div id='questions'>
+</div>
+
+<script>
+
+    function htmlDecode(str) {
+        const doc = new DOMParser().parseFromString(str, "text/html");
+        return doc.documentElement.textContent;
+    }
+
+    var list = JSON.parse(htmlDecode('{{questions}}'))
+    if(list.length == 0){
+        var p = document.createElement("p")
+        p.innerHTML = 'Your search did not match any questions'
+        p.id = 'NoMatches'
+        document.getElementById('questions').appendChild(p)
+
+        var img = document.createElement("img")
+        img.src = " {% static 'error.png' %}"
+        img.id = "ErrorImage"
+        img.width = "400"
+        document.getElementById('questions').appendChild(img)
+    } else {
+        for(var i = 0; i < list.length; i++) {
+            var question = list[i]
+            var author = question['Author']
+            var title = question['Title']
+            var description = question['Description']
+            var creationdate = question['CreationDate']
+
+            var container = document.createElement("div")
+            container.className = "card"
+            var div1 = document.createElement("div")
+            div1.className = "card-body"
+            var a = document.createElement("a")
+            a.className = "card-title"
+            a.innerHTML = title
+            a.href = "read_question/" + question['Question_Id']
+            var p = document.createElement("p")
+            p.className = "card-text"
+            p.innerHTML = description.slice(0, 300)
+            div1.appendChild(a)
+            div1.appendChild(p)
+            var div2 = document.createElement("div")
+            div2.className = "card-footer"
+            var small = document.createElement("small")
+            small.innerHTML = "Published: " + new Date(creationdate)
+            var small2 = document.createElement("small")
+            small2.innerHTML = "Author: " + author
+            small2.id = "author"
+            div2.appendChild(small)
+            div2.appendChild(small2)
+            container.appendChild(div1)
+            container.appendChild(div2)
+            
+            document.getElementById("questions").appendChild(container)
+        }
+    }
+
+</script>
+
+{% endblock %}

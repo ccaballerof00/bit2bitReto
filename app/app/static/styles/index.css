@@ -1,0 +1,33 @@
+#big_logo {
+    margin-top: 4.5rem;
+    margin-bottom: 2rem;
+}
+
+#searchbar {
+    width: 60%;
+    margin: auto;
+}
+
+#ask_question {
+    width: 75%;
+    margin: auto;
+    margin-top: 5.5rem;
+    padding: 2rem 0;
+    border-radius: 2rem;
+    border-style: none;
+    background-color: #f4811e;
+    font-size: 1.5rem;
+    margin-bottom: 5rem;
+}
+
+#basic-addon1 {
+    height: 4rem;
+}
+
+#basic-addon1:hover {
+    cursor: pointer;
+}
+
+input {
+    height: 4rem;
+}
